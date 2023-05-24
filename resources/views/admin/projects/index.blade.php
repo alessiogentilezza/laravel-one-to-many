@@ -12,6 +12,8 @@
                     <h5 class="card-title">{{ $project->title }}</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
+                    <h6 class="card-subtitle mb-3 text-success">Tipo di linguaggio: {{$project->type?->name}}</h6>
+
                     <a class="btn btn-primary" href="{{ route('admin.projects.show', $project->slug) }}">Vedi</a>
                     <a class="btn btn-warning" href="{{ route('admin.projects.edit', $project->slug) }}">Modifica</a>
                     <a href="{{ $project->link }}" class="ms-3 btn btn-success">Vai</a>
@@ -21,7 +23,7 @@
                         @method('DELETE')
                         <button type="submit" onclick="return confirm('Sei sicuro che vuoi eliminare questo progetto?')"
                             class="mt-3 btn btn-danger">Elimina</button>
-                        </form>
+                    </form>
 
                 </div>
             </div>

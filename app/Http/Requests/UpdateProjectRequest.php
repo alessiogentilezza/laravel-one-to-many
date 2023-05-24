@@ -31,6 +31,8 @@ class UpdateProjectRequest extends FormRequest
             'link' => 'required|max:150',
             'content' => 'nullable|min:10|max:2000',
             'cover_image' => 'required|url|max:255',
+            'type_id' => 'nullable|exists:types,id'
+
         ];
     }
 }
