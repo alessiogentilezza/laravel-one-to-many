@@ -3,7 +3,7 @@
 @section('page-title', "Modifica: $project->title")
 
 @section('content')
-    <form method="POST" action="{{ route('admin.projects.update', ['project' => $project->slug]) }}">
+    <form method="project" action="{{ route('admin.projects.update', ['project' => $project->slug]) }}">
 
         @csrf
         @method('PUT')
@@ -35,6 +35,21 @@
             <input type="text" class="form-control @error('cover_image') is-invalid @enderror " id="cover_image"
                 name="cover_image" value="{{ old('cover_image', $project->cover_image) }}">
             @error('cover_image')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="type_id" class="form-label">Seleziona tipo di linguaggio</label>
+            <select class="form-select @error('type_id') is-invalid @enderror" name="type_id" id="type_id">
+                <option @selected(old('type_id', $project->type_id) == '') value="">Nessuna tipo selezionato</option>
+                @foreach ($types as $type)
+                    <option @selected(old('type_id', $project->type_id) == $type->id) value="{{ $type->id }}">{{ $type->name }}</option>
+                @endforeach
+            </select>
+            @error('type_id')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>
