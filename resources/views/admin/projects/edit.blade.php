@@ -3,7 +3,7 @@
 @section('page-title', "Modifica: $project->title")
 
 @section('content')
-    <form method="project" action="{{ route('admin.projects.update', ['project' => $project->slug]) }}">
+    <form method="POST" action="{{ route('admin.projects.update', ['project' => $project->slug]) }}">
 
         @csrf
         @method('PUT')
@@ -55,6 +55,15 @@
                 </div>
             @enderror
         </div>
+
+
+
+
+
+
+
+
+
 
         <div class="mb-3">
             <label for="content" class="form-label">Testo dell'articolo</label>
